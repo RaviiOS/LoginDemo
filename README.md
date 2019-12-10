@@ -1,2 +1,2 @@
 # LoginDemo
-This is the demo app of login and logout for the navigation
+This is the demo app for the login and logout flow
