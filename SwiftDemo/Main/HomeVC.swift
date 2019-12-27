@@ -9,11 +9,13 @@
 import UIKit
 
 class HomeVC: UIViewController {
+    @IBOutlet var dashboardTableView: UITableView!
+    @IBOutlet var logoImageView: UIImageView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        dashboardTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
 
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func tapOnLogout() {
@@ -21,4 +23,15 @@ class HomeVC: UIViewController {
         UIApplication.setRootView(LoginVC.instantiate(fromAppStoryboard: .PreLogin), options: UIApplication.logoutAnimation)
     }
 
+}
+
+extension HomeVC: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        return cell
+    }
 }
